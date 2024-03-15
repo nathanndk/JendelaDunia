@@ -32,7 +32,7 @@
                    </div>
                 </div>
              </div>
-             <div class="paly_bt"><a href="#">Read Now</a></div>
+             <div class="paly_bt"><a href="/books">Read Now</a></div>
           </div>
        </div>
     </div>
