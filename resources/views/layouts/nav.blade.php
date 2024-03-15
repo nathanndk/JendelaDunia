@@ -48,9 +48,11 @@
              <li class="nav-item">
                 <a class="nav-link {{ Request::is('books*') ? 'active' : '' }}" href="/books">Books</a>
              </li>
+             @auth
              <li class="nav-item">
                 <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}" href="/categories">Categories</a>
              </li>
+             @endauth
           </ul>
           <form class="form-inline my-2 my-lg-0" action="{{ route('books.index') }}" method="GET">
               <input class="form-control mr-sm-2" name="search" placeholder="Search books..."

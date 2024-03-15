@@ -7,7 +7,7 @@
     <h2 class="letest_text">Categories</h2>
     <li><a href="{{ route('categories.create') }}" class="btn btn-primary">Add Category</a><li>
      <div class="books_menu">
-     <div class="list-group mt-3 mb-3">
+     <div class="list-group mt-3 mb-3 section_title">
          @foreach($categories as $category)
          <div class="list-group-item">
              {{ $category->name }}

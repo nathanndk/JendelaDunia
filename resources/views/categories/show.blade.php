@@ -3,27 +3,31 @@
 @section('content')
 
 <div class="container mt-5">
-    <div class="card">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h4 class="card-title mb-0">{{ $category->category }}</h4>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">{{ $category->category }}</h5>
-            <p class="card-text">Threads in this category:</p>
+            <h6 class="card-subtitle mb-2 text-muted">Threads in this category:</h6>
 
             @if($books && $books->count() > 0)
-                <ul>
+                <div class="list-group">
                     @foreach($books as $book)
-                        <li>
-                            <a href="{{ route('books.show', $book->id) }}" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
+                        <a href="{{ route('books.show', $book->id) }}" class="list-group-item list-group-item-action">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
                                     <h5 class="mb-1">{{ $book->title }}</h5>
-                                    <small>Published on: {{ $book->publication_date }}</small>
+                                    <p class="mb-0">{{ $book->author }}</p>
                                 </div>
-                                <p class="mb-1">{{ $book->author }}</p>
-                            </a>
-                        </li>
+                                <div class="col-md-4 text-muted text-end">
+                                    <small>Published on: {{ $book->published_date }}</small>
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
-                </ul>
+                </div>
             @else
-                <p>No threads in this category.</p>
+                <p class="text-muted">No threads in this category.</p>
             @endif
         </div>
     </div>

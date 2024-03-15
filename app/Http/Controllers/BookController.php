@@ -21,6 +21,10 @@ class BookController extends Controller
             });
         }
 
+        if ($request->has('book_category_id')) {
+            $query->where('book_category_id', $request->get('book_category_id'));
+        }
+
         $books = $query->get();
 
         $categories = Category::all();
