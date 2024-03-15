@@ -1,47 +1,58 @@
-<x-guest-layout>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+@extends('layouts.nav')
 
-
-
-
-
-
-
+@section('content')
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Register</div>
+                <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <!-- Name -->
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                            <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" class="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+                            @error('name')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Email Address -->
-                        <div class="mt-4">
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input id="email" type="email" name="email" :value="old('email')" required autocomplete="username" class="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autocomplete="username">
+                            @error('email')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Password -->
-                        <div class="mt-4">
-                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                            <input id="password" type="password" name="password" required autocomplete="new-password" class="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required autocomplete="new-password">
+                            @error('password')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Confirm Password -->
-                        <div class="mt-4">
-                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        <div class="mb-3">
+                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required autocomplete="new-password">
+                            @error('password_confirmation')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        <div class="mt-6">
-                            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                                Sign up
-                            </button>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Sign up</button>
                         </div>
                     </form>
-</x-guest-layout>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
